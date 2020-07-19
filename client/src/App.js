@@ -1,42 +1,47 @@
 import React, { Fragment } from "react";
-import Header from './Components/Layouts/Header';
-import Footer from './Components/Layouts/Footer';
+import LandingPage from './Pages/LandingPage'
 import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
+import {purple, red,} from "@material-ui/core/colors";
 import { BrowserRouter as Router, Route, Switch, } from "react-router-dom";
 import "./App.css";
 
 
 function App (){
-  const darkTheme = createMuiTheme({
+  const theme = createMuiTheme({
     palette: {
-      type: 'dark',
+      primary: {
+        main:purple[800],
+      },
+      secondary: {
+        main: red[900],
+      },
+      
     },
-  });
+  });  
 
 
   return (
   
-  <ThemeProvider theme = {darkTheme}>
+  <ThemeProvider theme = {theme}>
+    <App>
+      <Fragment> 
+        <Router>
 
-    <Fragment> 
-      <Router>
-
-        <div>
+          
 
           <Switch>
             <Route exact path = {"/"}>
-
+              <LandingPage components = {LandingPage} />
             </Route>
           </Switch>
-        </div>
+        
 
-      </Router>
+        </Router>
 
-      <Header/>
+        
 
-      <Footer/>
-
-    </Fragment>
+      </Fragment>
+    </App>
   </ThemeProvider>
     
   
